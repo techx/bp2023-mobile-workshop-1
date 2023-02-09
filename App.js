@@ -1,15 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+
+import cookieImage from './assets/cookie.png';
 
 export default function App() {
+  const [clicks, setClicks] = useState(0);
+
   const handlePress = () => {
-    Alert.alert("Beep boop", "I was pressed!");
+    setClicks(clicks + 1);
   }
 
   return (
     <View style={styles.container}>
-      <Text>My first app!</Text>
-      <Button title="Press me!" onPress={handlePress} />
+      <Text>Cookie Clicker 2</Text>
+      <Text>Clicks: {clicks}</Text>
+      <Pressable onPress={handlePress}>
+        <Image source={cookieImage} style={styles.cookie} />
+      </Pressable>
       <StatusBar style="auto" />
     </View>
   );
@@ -22,4 +30,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  cookie: {
+    width: 200,
+    height: 200,
+  }
 });
