@@ -1,10 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const handlePress = () => {
+    Alert.alert("Beep boop", "I was pressed!");
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>My first app!</Text>
+      <Button title="Press me!" onPress={handlePress} />
       <StatusBar style="auto" />
     </View>
   );
